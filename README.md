@@ -1,5 +1,17 @@
+<!-- omit in toc -->
 # hbsr
 NodeJS package providing methods for rendering Handlebars templates from string and template file.
+
+<!-- omit in toc -->
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [With a string template](#with-a-string-template)
+  - [With a template file](#with-a-template-file)
+- [Template options](#template-options)
+- [Licensing](#licensing)
+
 
 ## Installation
 ```bash
@@ -65,10 +77,10 @@ console.log(result);
 ## Template options
 
 Template options reside in `hbsr.options` property:
-Option | Description | Default
----------|----------|---------
- `template_path` | Folder where template files reside | `./templates` -- relative to scripts execution location
- `template_extension` | Template file extension | `.hbs` -- extension added to `basename` parameter
+| Option               | Description                        | Default                                                 |
+| -------------------- | ---------------------------------- | ------------------------------------------------------- |
+| `template_path`      | Folder where template files reside | `./templates` -- relative to scripts execution location |
+| `template_extension` | Template file extension            | `.hbs` -- extension added to `basename` parameter       |
 
 
 ```js
