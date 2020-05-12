@@ -11,9 +11,9 @@ module.exports = {
     /**
      * Render template file with values.
      * 
-     * @param {string} basename 
-     * @param {object} data 
-     * @param {object} options 
+     * @param {string} basename Template file basename (no extension).
+     * @param {object} data Values to pass into template.
+     * @param {object} options Template path and template extension.
      * 
      * @returns string by filling template file.
      */
@@ -30,8 +30,8 @@ module.exports = {
     /**
      * Render template string with values.
      *  
-     * @param {string} source 
-     * @param {object} data 
+     * @param {string} source Template string.
+     * @param {object} data Values to pass into template.
      * 
      * @returns string by filling template string.
      */
