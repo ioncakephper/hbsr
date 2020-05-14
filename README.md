@@ -27,7 +27,7 @@ npm i hbsr
 ```js
 const hbsr = require('hbsr');
 
-let source = '
+let source = `
 Dear {{{firstName}}}:
 
 I am looking forward so seeing you on {{{date}}}!
@@ -35,7 +35,7 @@ I am looking forward so seeing you on {{{date}}}!
 Sincerely,
 
 {{{author}}}
-';
+`;
 
 let data = {
     firstName: "John",
