@@ -1,6 +1,6 @@
 {
   "name": "hbsr",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Provides methods for rendering Handlebars templates from string and template file",
   "main": "index.js",
   "scripts": {

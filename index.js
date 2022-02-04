@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
     "options": {
-        "template_path": "./templates",
+        "template_path": path.join(__dirname, '../../', "templates"),
         "template_extension": ".hbs"
     },
 
