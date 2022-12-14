@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/ioncakephper/hbsr#readme",
   "dependencies": {
-    "fs": "0.0.1-security",
+    "fs": "0.0.2",
     "handlebars": "^4.7.6",
     "path": "^0.12.7"
   }
