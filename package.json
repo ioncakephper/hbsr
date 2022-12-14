@@ -22,7 +22,7 @@
   "homepage": "https://github.com/ioncakephper/hbsr#readme",
   "dependencies": {
     "fs": "0.0.1-security",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "path": "^0.12.7"
   }
 }
