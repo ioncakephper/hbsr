@@ -2,41 +2,55 @@ const Handlebars = require('handlebars');
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * @typedef TemplateSetting - key/value settings to use during rendering.
+ * @property {string} [template_path='templates'] - the path where templates are located.
+ * @property {string} [template_extension='.hbs'] - the default extension for template files.  
+ */
+
+/**
+ * Render template file with values.
+ * 
+ * @param {string} basename - Template file basename (no extension).
+ * @param {object} data - the values to pass into template.
+ * @param {TemplateSetting} [options={}] - the settings for the template.
+ * 
+ * @returns string by filling template file.
+ */
+function render_template(basename, data = {}, options = {}) {
+    options = {
+        ...this.options,
+        ...options,
+    }
+
+    let extensions = basename.split('.');
+    let extension = (extensions.length > 1) ? extensions.pop() : undefined;
+    extension = (extension) ? extension : options.template_extension;
+    templateFilename = `${basename}${extension}`;
+
+    templateFilename = path.join(options.template_path, templateFilename);
+    let source = fs.readFileSync(templateFilename, "utf8");
+
+    return this.render(source, data);
+}
+
+/**
+ * Renders a template with the given data.           
+ * @param {string} source - the source of the template           
+ * @param {object} [data={}] - the data to pass to the template           
+ * @param {TemplateSetting} [options={}] - the options to pass to the template           
+ * @returns {string} the rendered template           
+ */
+function render(source, data = {}, options = {}) {
+    let template = Handlebars.compile(source);
+    return template(data);
+}
+
 module.exports = {
     "options": {
-        "template_path": path.join(__dirname, '../../', "templates"),
+        "template_path": "templates",
         "template_extension": ".hbs"
     },
-
-    /**
-     * Render template file with values.
-     * 
-     * @param {string} basename Template file basename (no extension).
-     * @param {object} data Values to pass into template.
-     * @param {object} options Template path and template extension.
-     * 
-     * @returns string by filling template file.
-     */
-    "render_template": function(basename, data = {}, options = {}) {
-        let template_path = options.template_path || this.options.template_path;
-        let template_extension = options.template_extension || this.options.template_extension;
-
-        let templateFilename = path.resolve(path.join(template_path, basename + template_extension));
-        let source = fs.readFileSync(templateFilename, "utf8");
-
-        return this.render(source, data);
-    },
-
-    /**
-     * Render template string with values.
-     *  
-     * @param {string} source Template string.
-     * @param {object} data Values to pass into template.
-     * 
-     * @returns string by filling template string.
-     */
-    "render": function(source, data) {
-        let template = Handlebars.compile(source);
-        return template(data);
-    }
+    render_template,
+    render,
 }
