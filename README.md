@@ -2,6 +2,7 @@
 # hbsr
 NodeJS package providing methods for rendering Handlebars templates from string and template file.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/209f5ffc143448c9bfd992ad3d0116cf)](https://app.codacy.com/gh/ioncakephper/hbsr?utm_source=github.com&utm_medium=referral&utm_content=ioncakephper/hbsr&utm_campaign=Badge_Grade)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ioncakephper/hbsr)[![Ask me anything](https://img.shields.io/badge/Ask%20me-anything-orange)](https://github.com/ioncakephper/hbsr)
 
 <!-- omit in toc -->
