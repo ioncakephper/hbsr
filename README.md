@@ -1,6 +1,8 @@
 <!-- omit in toc -->
 # hbsr
 
+
+
 Render Handlebars templates seamlessly from strings or files.
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ioncakephper/hbsr)[![npm](https://img.shields.io/npm/v/hbsr)](https://www.npmjs.com/package/hbsr)
