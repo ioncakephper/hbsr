@@ -11,7 +11,7 @@ Render Handlebars templates seamlessly from strings or files.
 [![npm](https://img.shields.io/npm/dm/hbsr)](https://www.npmjs.com/package/hbsr)
 [![GitHub issues](https://img.shields.io/github/issues/ioncakephper/hbsr)](https://github.com/ioncakephper/hbsr/issues)
 [![CodeFactor](https://www.codefactor.io/repository/github/ioncakephper/hbsr/badge)](https://www.codefactor.io/repository/github/ioncakephper/hbsr)
-[![Maintainability](https://codeclimate.com/github/ioncakephper/hbsr/badges/maintainability)](https://codeclimate.com/github/ioncakephper/hbsr)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4a1f14b23bfad577d28d/maintainability)](https://codeclimate.com/github/ioncakephper/hbsr/maintainability)
 
 <!-- omit in toc -->
 ## Table of Contents
