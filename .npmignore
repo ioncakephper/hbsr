@@ -1,0 +1,10 @@
+.DS_Store
+.git
+.github
+.vscode
+*.log
+*.md
+node_modules
+coverage
+*.ts
+*.test.js
