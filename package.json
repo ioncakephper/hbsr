@@ -1,6 +1,6 @@
 {
   "name": "hbsr",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Render Handlebars templates seamlessly from strings or files, simplifying your templating workflow. Supports precompilation for enhanced performance.",
   "keywords": [
     "file",

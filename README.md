@@ -1,8 +1,17 @@
 <!-- omit in toc -->
 # hbsr
-NodeJS package providing methods for rendering Handlebars templates from string and template file.
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ioncakephper/hbsr)[![Ask me anything](https://img.shields.io/badge/Ask%20me-anything-orange)](https://github.com/ioncakephper/hbsr)
+Render Handlebars templates seamlessly from strings or files.
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ioncakephper/hbsr)[![npm](https://img.shields.io/npm/v/hbsr)](https://www.npmjs.com/package/hbsr)
+[![Node.js CI](https://github.com/ioncakephper/hbsr/actions/workflows/node.js.yml/badge.svg)](https://github.com/ioncakephper/hbsr/actions/workflows/node.js.yml)
+[![GitHub license](https://img.shields.io/github/license/ioncakephper/hbsr)](https://github.com/ioncakephper/hbsr/blob/main/LICENSE)
+[![npm](https://img.shields.io/npm/dm/hbsr)](https://www.npmjs.com/package/hbsr)
+[![GitHub issues](https://img.shields.io/github/issues/ioncakephper/hbsr)](https://github.com/ioncakephper/hbsr/issues)
+[![CodeFactor](https://www.codefactor.io/repository/github/ioncakephper/hbsr/badge)](https://www.codefactor.io/repository/github/ioncakephper/hbsr)
+[![Maintainability](https://codeclimate.com/github/ioncakephper/hbsr/badges/maintainability)](https://codeclimate.com/github/ioncakephper/hbsr)
+
+
 
 <!-- omit in toc -->
 ## Table of Contents
@@ -12,6 +21,7 @@ NodeJS package providing methods for rendering Handlebars templates from string 
   - [With a string template](#with-a-string-template)
   - [With a template file](#with-a-template-file)
 - [Template options](#template-options)
+- [Author](#author)
 - [Licensing](#licensing)
 
 
@@ -121,6 +131,10 @@ let data = {};
 let r = hbsr.render_template('page', data, {'template_path': '../../templates'})
 
 ```
+
+## Author
+
+[Ion Gireada](https://github.com/ioncakephper) - shytiger@yahoo.com
 
 
 ## Licensing
