@@ -122,6 +122,7 @@ let r = hbsr.render_template('page', data, {'template_path': '../../templates'})
 
 ```
 
+
 ## Licensing
 
-This package is released under the [MIT License](https://opensource.org/licenses/MIT)
+This package is released under the [MIT License](./LICENSE).
