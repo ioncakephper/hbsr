@@ -5,6 +5,22 @@
 ## [Unreleased]
 
 ### Changed
+- Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (d92d108)
+- Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (49455ce)
+- Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (edea753)
+- Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (f7a78f3)
+- Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (f1246c6)
+- Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (10215f0)
+- Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (83a4796)
+- Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (dc6cb45)
+- Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (1fe309d)
+
+### Fixed
+- Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (e6dd309)
+
+## [Unreleased]
+
+### Changed
 - Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (10215f0)
 - Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (83a4796)
 - Error generating description: OpenAI model is not set in the configuration. Please set it in the extension settings. (dc6cb45)
