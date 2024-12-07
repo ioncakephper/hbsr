@@ -1,25 +1,34 @@
 {
   "name": "hbsr",
   "version": "1.0.11",
-  "description": "Provides methods for rendering Handlebars templates from string and template file",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Render Handlebars templates seamlessly from strings or files, simplifying your templating workflow. Supports precompilation for enhanced performance.",
+  "keywords": [
+    "file",
+    "handlebars",
+    "hbs",
+    "precompile",
+    "render",
+    "string",
+    "template"
+  ],
+  "author": {
+    "name": "Ion Gireada",
+    "email": "ion.gireada@gmail.com",
+    "url": "https://github.com/ioncakephper"
   },
+  "license": "ISC",
+  "homepage": "https://github.com/ioncakephper/hbsr#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ioncakephper/hbsr.git"
   },
-  "keywords": [
-    "handlebars",
-    "render"
-  ],
-  "author": "Ion Gireada",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/ioncakephper/hbsr/issues"
   },
-  "homepage": "https://github.com/ioncakephper/hbsr#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "fs": "0.0.1-security",
     "handlebars": "^4.7.7",
