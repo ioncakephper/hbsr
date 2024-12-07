@@ -11,8 +11,6 @@ Render Handlebars templates seamlessly from strings or files.
 [![CodeFactor](https://www.codefactor.io/repository/github/ioncakephper/hbsr/badge)](https://www.codefactor.io/repository/github/ioncakephper/hbsr)
 [![Maintainability](https://codeclimate.com/github/ioncakephper/hbsr/badges/maintainability)](https://codeclimate.com/github/ioncakephper/hbsr)
 
-
-
 <!-- omit in toc -->
 ## Table of Contents
 
@@ -24,8 +22,8 @@ Render Handlebars templates seamlessly from strings or files.
 - [Author](#author)
 - [Licensing](#licensing)
 
-
 ## Installation
+
 ```bash
 npm i hbsr
 ```
@@ -56,6 +54,7 @@ let data = {
 let result = hbsr.render(source, data);
 console.log(result);
 ```
+
 ### With a template file
 
 Create `templates/letter.hbs` with the following content:
@@ -89,11 +88,11 @@ console.log(result);
 ## Template options
 
 Template options reside in `hbsr.options` property:
+
 | Option               | Description                        | Default                                                 |
 | -------------------- | ---------------------------------- | ------------------------------------------------------- |
 | `template_path`      | Folder where template files reside | `./templates` -- relative to scripts execution location |
 | `template_extension` | Template file extension            | `.hbs` -- extension added to `basename` parameter       |
-
 
 ```js
 const hbsr = require('hbsr');
@@ -134,8 +133,7 @@ let r = hbsr.render_template('page', data, {'template_path': '../../templates'})
 
 ## Author
 
-[Ion Gireada](https://github.com/ioncakephper) - shytiger@yahoo.com
-
+[Ion Gireada](https://github.com/ioncakephper) - <shytiger@yahoo.com>
 
 ## Licensing
 
