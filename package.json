@@ -1,19 +1,22 @@
 {
   "name": "hbsr",
   "version": "1.0.12",
-  "description": "Render Handlebars templates seamlessly from strings or files, simplifying your templating workflow. Supports precompilation for enhanced performance.",
+  "description": "A simple and lightweight Node.js utility to render Handlebars templates from both strings and files.",
   "keywords": [
-    "file",
     "handlebars",
     "hbs",
-    "precompile",
+    "template",
+    "templating",
+    "template-engine",
+    "view-engine",
     "render",
+    "file",
     "string",
-    "template"
+    "nodejs",
+    "utility"
   ],
   "author": {
     "name": "Ion Gireada",
-    "email": "ion.gireada@gmail.com",
     "url": "https://github.com/ioncakephper"
   },
   "license": "MIT",
@@ -27,7 +30,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "dependencies": {
     "handlebars": "^4.7.7",
