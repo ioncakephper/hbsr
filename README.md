@@ -10,7 +10,6 @@ Render Handlebars templates seamlessly from strings or files.
 [![GitHub issues](https://img.shields.io/github/issues/ioncakephper/hbsr)](https://github.com/ioncakephper/hbsr/issues)
 [![CodeFactor](https://www.codefactor.io/repository/github/ioncakephper/hbsr/badge)](https://www.codefactor.io/repository/github/ioncakephper/hbsr)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4a1f14b23bfad577d28d/maintainability)](https://codeclimate.com/github/ioncakephper/hbsr/maintainability)
-[![Coverage Status](https://img.shields.io/coveralls/github/ioncakephper/hbsr/main)](https://coveralls.io/github/ioncakephper/hbsr?branch=main)
 
 <!-- omit in toc -->
 ## Table of Contents
