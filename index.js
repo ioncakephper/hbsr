@@ -109,50 +109,35 @@ const templateCache = new Map();
  * @throws {TemplateRenderError} If the template source is invalid, data is invalid, options are invalid, compilation fails, or rendering fails.
  */
 function render(source, data = {}, execOptions = {}) {
+    // Validate and sanitize the source input upfront
+    if (typeof source !== 'string' || !source.trim()) {
+        throw new TemplateRenderError('Invalid template source', 'INVALID_SOURCE');
+    }
     const cacheKey = source;
     let template;
-
     // Check if the template is already cached
     if (templateCache.has(cacheKey)) {
         template = templateCache.get(cacheKey);
     } else {
-        // Validate and sanitize the source input
-        if (typeof source !== 'string' || !source.trim()) {
-            throw new TemplateRenderError('Invalid template source', 'INVALID_SOURCE');
-        }
-
-        // Compile the template
+        // Compile the template and cache it
         template = Handlebars.compile(source);
         templateCache.set(cacheKey, template);
     }
+    // Validate and sanitize the data and options inputs
+    validateAndSanitizeInputs(data, execOptions);
     try {
-        // Validate and sanitize the source input
-        if (typeof source !== 'string' || !source.trim()) {
-            throw new TemplateRenderError('Invalid template source', 'INVALID_SOURCE');
-        }
-
-        // Validate and sanitize the data input
-        if (typeof data !== 'object' || data === null) {
-            throw new TemplateRenderError('Invalid data: must be an object', 'INVALID_DATA');
-        }
-
-        // Validate and sanitize the options input
-        if (typeof execOptions !== 'object' || execOptions === null) {
-            throw new TemplateRenderError('Invalid options: must be an object', 'INVALID_OPTIONS');
-        }
-
-        // Sanitize the data and options
-        const sanitizedData = sanitizeData(data);
-        const sanitizedExecOptions = sanitizeExecOptions(execOptions);
-
         // Render the template with sanitized data and options
-        return template(sanitizedData, sanitizedExecOptions);
+        return template(sanitizeData(data), sanitizeExecOptions(execOptions));
     } catch (error) {
-        if (error instanceof TemplateRenderError) {
-            throw error;
-        }
-
         throw new TemplateRenderError('Error rendering template', 'TEMPLATE_RENDER_ERROR', { cause: error });
+    }
+}
+function validateAndSanitizeInputs(data, execOptions) {
+    if (typeof data !== 'object' || data === null) {
+        throw new TemplateRenderError('Invalid data: must be an object', 'INVALID_DATA');
+    }
+    if (typeof execOptions !== 'object' || execOptions === null) {
+        throw new TemplateRenderError('Invalid options: must be an object', 'INVALID_OPTIONS');
     }
 }
 
@@ -166,17 +151,23 @@ function render(source, data = {}, execOptions = {}) {
  */
 function sanitizeData(data) {
     if (typeof data === "string") {
-        return data.replace(/&/g, "&#x26;").replace(/</g, "&#x3C;").replace(/>/g, "&#x3E;").replace(/"/g, "&#x22;").replace(/'/g, "&#x27;");
+        // Use a single replace with a function to handle all replacements
+        return data.replace(/[&<>\"']/g, function (match) {
+            const entities = {
+                '&': '&#x26;',
+                '<': '&#x3C;',
+                '>': '&#x3E;',
+                '"': '&#x22;',
+                "'": '&#x27;'
+            };
+            return entities[match];
+        });
     } else if (Array.isArray(data)) {
         return data.map(sanitizeData);
-    } else if (typeof data === 'object' && data !== null) {
-        const sanitized = {};
-        for (const key in data) {
-            if (Object.prototype.hasOwnProperty.call(data, key)) {
-                sanitized[key] = sanitizeData(data[key]);
-            }
-        }
-        return sanitized;
+    } else if (data !== null && typeof data === 'object') {
+        return Object.fromEntries(
+            Object.entries(data).map(([key, value]) => [key, sanitizeData(value)])
+        );
     }
     return data; // Return non-string, non-object, non-array values as-is
 }
