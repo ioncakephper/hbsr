@@ -135,7 +135,8 @@ let r = hbsr.render_template('page', data, {'template_path': '../../templates'})
 
 ## Contributing
 
-Contributions are welcome and greatly appreciated! Whether it's reporting a bug, suggesting a new feature, or submitting a pull request, your input is valuable.
+Contributions are welcome and greatly appreciated! Whether it's reporting a bug, suggesting a new feature, 
+or submitting a pull request, your input is valuable.
 
 ### Reporting Bugs & Requesting Features
 
@@ -148,7 +149,8 @@ If you'd like to contribute code, please follow these steps:
 1. **Fork** the repository and create your branch from `main`.
 2. **Install dependencies** by running `npm install`.
 3. **Make your changes**. Please ensure your code follows the existing style and that all new features or bug fixes are covered by tests.
-4. **Run tests** with `npm test` to ensure everything is working as expected and that code coverage is maintained or improved.
+4. **Run tests** with `npm test` to ensure everything is working as expected and that code coverage
+ is maintained or improved.
 5. **Commit your changes** with a clear and descriptive commit message.
 6. **Push** your branch to your fork.
 7. **Open a pull request** to the `main` branch of the original repository. We'll review your contribution as soon as possible.
