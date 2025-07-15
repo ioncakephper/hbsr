@@ -158,3 +158,7 @@ If you'd like to contribute code, please follow these steps:
 ## Licensing
 
 This package is released under the [MIT License](./LICENSE).
+
+# Author
+
+[ioncakephper](https://github.com/ioncakephper)
