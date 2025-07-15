@@ -19,7 +19,9 @@ Render Handlebars templates seamlessly from strings or files.
   - [With a string template](#with-a-string-template)
   - [With a template file](#with-a-template-file)
 - [Template options](#template-options)
-- [Author](#author)
+- [Contributing](#contributing)
+  - [Reporting Bugs \& Requesting Features](#reporting-bugs--requesting-features)
+  - [Pull Requests](#pull-requests)
 - [Licensing](#licensing)
 
 ## Installation
@@ -131,9 +133,25 @@ let r = hbsr.render_template('page', data, {'template_path': '../../templates'})
 
 ```
 
-## Author
+## Contributing
 
-[Ion Gireada](https://github.com/ioncakephper) - <shytiger@yahoo.com>
+Contributions are welcome and greatly appreciated! Whether it's reporting a bug, suggesting a new feature, or submitting a pull request, your input is valuable.
+
+### Reporting Bugs & Requesting Features
+
+Please use the [GitHub Issues](https://github.com/ioncakephper/hbsr/issues) to report bugs or request features. When creating an issue, please try to use the available templates and include as much detail as possible to help us understand and address the issue effectively.
+
+### Pull Requests
+
+If you'd like to contribute code, please follow these steps:
+
+1. **Fork** the repository and create your branch from `main`.
+2. **Install dependencies** by running `npm install`.
+3. **Make your changes**. Please ensure your code follows the existing style and that all new features or bug fixes are covered by tests.
+4. **Run tests** with `npm test` to ensure everything is working as expected and that code coverage is maintained or improved.
+5. **Commit your changes** with a clear and descriptive commit message.
+6. **Push** your branch to your fork.
+7. **Open a pull request** to the `main` branch of the original repository. We'll review your contribution as soon as possible.
 
 ## Licensing
 

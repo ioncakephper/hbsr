@@ -102,15 +102,11 @@ const templateCache = new Map();
 /**
  * Renders a Handlebars template with the given data and options.
  *
- * @param {string} source - the source of the template
- * @param {object} [data={}] - the data to pass to the template
- * @param {object} [execOptions={}] - the settings for the template
- * @returns {string} the rendered template
- * @throws {TemplateRenderError} if the template source is invalid
- * @throws {TemplateRenderError} if the data is invalid
- * @throws {TemplateRenderError} if the options are invalid
- * @throws {TemplateRenderError} if the template compilation fails
- * @throws {TemplateRenderError} if the template rendering fails
+ * @param {string} source - The source code of the Handlebars template.
+ * @param {object} [data={}] - The data to pass to the template.
+ * @param {object} [execOptions={}] - The execution options for the Handlebars template.
+ * @returns {string} The rendered template output.
+ * @throws {TemplateRenderError} If the template source is invalid, data is invalid, options are invalid, compilation fails, or rendering fails.
  */
 function render(source, data = {}, execOptions = {}) {
     const cacheKey = source;
