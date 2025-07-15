@@ -24,7 +24,7 @@ const path = require('path');
  * @throws if the template file is not found.
  * @throws if there is an error reading the template file.
  */
-function render_template(basename, data = {}, options = {}) {
+async function render_template(basename, data = {}, options = {}) {
     /**
      * Check the basename argument.
      *
@@ -49,8 +49,8 @@ function render_template(basename, data = {}, options = {}) {
      * @type {string}
      */
     const templateFilename = path.resolve(
-        options.template_path || this.options.template_path,
-        basename + (options.template_extension || this.options.template_extension)
+        options.template_path || module.exports.options.template_path,
+        basename + (options.template_extension || module.exports.options.template_extension)
     );
 
     /**
@@ -60,15 +60,16 @@ function render_template(basename, data = {}, options = {}) {
      * @throws if there is an error reading the template file.
      * @returns the rendered template.
      */
-    try {
-        return render(fs.readFileSync(templateFilename, "utf8"), data, options);
-    } catch (e) {
-        if (e.code === 'ENOENT') {
-            throw new Error(`Template file not found: ${templateFilename}`);
-        } else {
-            throw new Error(`Error reading template file: ${e.message}`);
+    try{
+        const templateContent = await fs.promises.readFile(templateFilename, "utf8");
+        return render(templateContent, data, options);
+    } catch (error){
+        if (error.code === 'ENOENT'){
+            throw new Error(`Template file not found: ${templateFilename}`);    
         }
+        throw new Error(`Error reading template file: ${error.message}`);
     }
+    
 }
 
 /**
@@ -79,13 +80,13 @@ function render_template(basename, data = {}, options = {}) {
  * @extends Error
  */
 class TemplateRenderError extends Error {
-    constructor(message, code) {
+    constructor(message, code, options) {
         /**
          * The error message.
          *
          * @type {string}
          */
-        super(message);
+        super(message, options);
 
         /**
          * The error code.
@@ -145,15 +146,28 @@ function render(source, data = {}, execOptions = {}) {
 }
 
 /**
- * Sanitizes the given data input.
+ * Recursively sanitizes data by escaping HTML characters in strings.
+ * It traverses objects and arrays, converting characters like `<`, `>`, `&`
+ * into their hexadecimal entity equivalents (e.g., `&#x3C;`) to prevent XSS attacks.
  *
- * @param {object} data - the data to sanitize
- * @returns {object} the sanitized data
+ * @param {*} data - The data to sanitize. Can be a string, array, object, or any other type.
+ * @returns {*} The sanitized data, with all string values escaped.
  */
 function sanitizeData(data) {
-    // Implement data sanitization logic here
-    // For example, escape HTML entities
-    return data;
+    if (typeof data === "string") {
+        return data.replace(/&/g, "&#x26;").replace(/</g, "&#x3C;").replace(/>/g, "&#x3E;").replace(/"/g, "&#x22;").replace(/'/g, "&#x27;");
+    } else if (Array.isArray(data)) {
+        return data.map(sanitizeData);
+    } else if (typeof data === 'object' && data !== null) {
+        const sanitized = {};
+        for (const key in data) {
+            if (Object.prototype.hasOwnProperty.call(data, key)) {
+                sanitized[key] = sanitizeData(data[key]);
+            }
+        }
+        return sanitized;
+    }
+    return data; // Return non-string, non-object, non-array values as-is
 }
 
 /**
