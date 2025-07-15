@@ -1,7 +1,5 @@
 <!-- omit in toc -->
-# hbsr
-
-
+# Handlebars Renderer for Files and Strings
 
 Render Handlebars templates seamlessly from strings or files.
 

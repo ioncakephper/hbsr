@@ -24,7 +24,7 @@ const path = require('path');
  * @throws if the template file is not found.
  * @throws if there is an error reading the template file.
  */
-async function render_template(basename, data = {}, options = {}) {
+function render_template(basename, data = {}, options = {}) {
     /**
      * Check the basename argument.
      *
@@ -61,8 +61,8 @@ async function render_template(basename, data = {}, options = {}) {
      * @returns the rendered template.
      */
     try{
-        const templateContent = await fs.promises.readFile(templateFilename, "utf8");
-        return render(templateContent, data, options);
+        const templateContent = fs.readFileSync(templateFilename, "utf8");
+        return module.exports.render(templateContent, data, options);
     } catch (error){
         if (error.code === 'ENOENT'){
             throw new Error(`Template file not found: ${templateFilename}`);    
@@ -97,6 +97,8 @@ class TemplateRenderError extends Error {
     }
 }
 
+const templateCache = new Map();
+
 /**
  * Renders a Handlebars template with the given data and options.
  *
@@ -111,6 +113,22 @@ class TemplateRenderError extends Error {
  * @throws {TemplateRenderError} if the template rendering fails
  */
 function render(source, data = {}, execOptions = {}) {
+    const cacheKey = source;
+    let template;
+
+    // Check if the template is already cached
+    if (templateCache.has(cacheKey)) {
+        template = templateCache.get(cacheKey);
+    } else {
+        // Validate and sanitize the source input
+        if (typeof source !== 'string' || !source.trim()) {
+            throw new TemplateRenderError('Invalid template source', 'INVALID_SOURCE');
+        }
+
+        // Compile the template
+        template = Handlebars.compile(source);
+        templateCache.set(cacheKey, template);
+    }
     try {
         // Validate and sanitize the source input
         if (typeof source !== 'string' || !source.trim()) {
@@ -130,9 +148,6 @@ function render(source, data = {}, execOptions = {}) {
         // Sanitize the data and options
         const sanitizedData = sanitizeData(data);
         const sanitizedExecOptions = sanitizeExecOptions(execOptions);
-
-        // Compile the template
-        const template = Handlebars.compile(source);
 
         // Render the template with sanitized data and options
         return template(sanitizedData, sanitizedExecOptions);
